@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: tuniride
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/tuniride}
+    username: ${DB_USER:tuniride}
+    password: ${DB_PASSWORD:tuniride}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

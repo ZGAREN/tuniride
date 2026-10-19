@@ -1,0 +1,33 @@
+# Local development services. Ports are shifted (+1) so this can run next to other projects.
+name: tuniride
+
+services:
+  postgres:
+    image: postgis/postgis:17-3.5
+    platform: linux/amd64 # no arm64 build published; runs emulated on Apple Silicon
+    environment:
+      POSTGRES_DB: tuniride
+      POSTGRES_USER: tuniride
+      POSTGRES_PASSWORD: tuniride
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tuniride -d tuniride"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7.4-alpine
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  postgres-data:
