@@ -5,8 +5,8 @@ Chaque phase = une branche, une ou plusieurs pull requests, la CI verte, puis le
 | # | Phase | Ce que tu construis | Ce que tu maîtrises pour l'entretien | Statut |
 |---|---|---|---|---|
 | 0 | Fondations | Monorepo, docker-compose (PostGIS, Redis), Spring Boot 4 / Java 21, Flyway, Testcontainers, CI | Docker, Git/PR, CI, pourquoi Testcontainers plutôt que H2 | ✅ fait |
-| 1 | Premier domaine | Entité `Driver` + migration, repository, service, contrôleur REST, gestion d'erreurs, tests | Couches, DTO vs entité, `@Transactional`, validation, `@ControllerAdvice` | 👉 en cours |
-| 2 | Authentification | Connexion par téléphone + code SMS (simulé), JWT access + refresh, rôles RIDER/DRIVER/ADMIN | Spring Security, filtres, stateless, rotation de refresh token | |
+| 1 | Premier domaine | Entité `Driver` + migration, repository, service, contrôleur REST, gestion d'erreurs, tests | Couches, DTO vs entité, `@Transactional`, validation, `@ControllerAdvice` | ✅ fait |
+| 2 | Authentification | Connexion par téléphone + code SMS (simulé), JWT access + refresh, rôles RIDER/DRIVER/ADMIN | Spring Security, filtres, stateless, rotation de refresh token | 👉 prochaine |
 | 3 | Courses | Demande de course, machine à états (REQUESTED → ACCEPTED → STARTED → COMPLETED / CANCELLED), prix en millimes | Modélisation du domaine, enum + transitions, `long` vs `BigDecimal` | |
 | 4 | Matching | Positions chauffeurs dans Redis GEO, chauffeurs à moins de 3 km, acceptation concurrente | Redis, PostGIS, verrou optimiste `@Version`, conditions de course | |
 | 5 | Temps réel + clients | WebSocket/STOMP pour suivre le taxi ; appli Flutter passager/chauffeur ; admin Angular | WebSocket vs polling, RxJS, état côté client | |
